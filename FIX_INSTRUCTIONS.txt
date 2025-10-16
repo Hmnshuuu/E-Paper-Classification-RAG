@@ -1,0 +1,41 @@
+QUICK FIX FOR DETECTRON2 ERROR
+================================
+
+The notebook is failing because Detectron2 requires heavy dependencies.
+Here's the quick fix:
+
+OPTION 1 - Replace the PDFProcessor class in the notebook:
+-----------------------------------------------------------
+1. In the notebook, find cell 7 (the PDFProcessor class)
+2. Delete the entire cell content
+3. Replace with this import:
+
+from simplified_pdf_processor import PDFProcessor
+print("PDFProcessor class loaded successfully (simplified version)")
+
+4. Make sure simplified_pdf_processor.py is in the same directory as the notebook
+5. Run the notebook again
+
+
+OPTION 2 - Copy the simplified code directly:
+----------------------------------------------
+1. Open: notebooks/simplified_pdf_processor.py
+2. Copy the entire PDFProcessor class
+3. In the notebook, replace cell 7 with that code
+4. Run the notebook again
+
+
+The simplified version uses pdfplumber instead of Detectron2:
+- No heavy dependencies required
+- Works immediately
+- Still extracts text regions, titles, and figures
+- Groups text into logical blocks
+- Provides visualizations
+
+After the fix, the notebook will:
+✓ Process pages 1, 2, 9, 10
+✓ Extract text regions using pdfplumber
+✓ Run OCR on each region
+✓ Classify content as News/Ads
+✓ Build RAG index
+✓ Generate statistics and visualizations
